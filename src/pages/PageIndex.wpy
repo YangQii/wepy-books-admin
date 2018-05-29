@@ -1,0 +1,26 @@
+<style lang="less">
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #eee;
+  }
+</style>
+<template>
+  <view class="main-body">
+
+  </view>
+</template>
+<script>
+  import wepy from 'wepy';
+  export default class PageIndex extends wepy.page{
+    config = {
+
+    };
+    components = {
+
+    };
+    data = {
+
+    };
+  }
+</script>
