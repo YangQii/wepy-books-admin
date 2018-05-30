@@ -45,6 +45,7 @@
 </template>
 <script>
   import wepy from 'wepy';
+  import 'wepy-async-function'
   export default class PageIndex extends wepy.page{
     config = {
 
@@ -53,14 +54,39 @@
 
     };
     data = {
-
+      scanBaseUrl: 'https://easy-mock.com/mock/5b0e6ab326e024799d313520/bookreturn/borrow/',
+      scanHeader: '8/?book=',
+      scanBody: '$costmoney=20!?book=',
     };
     methods = {
       handleScanCode () {
         wx.scanCode({
           onlyFromCamera: true,
           success: (res) => {
-            console.log(res)
+            console.log(res);
+            if (res.errMsg === 'scanCode:ok') {
+              switch (res.result) {
+                // case '8/?book=521$costmoney=20!?book=521':
+                case `${this.scanHeader}521${this.scanBody}521`:
+                  wx.request({
+                    url: `${this.scanBaseUrl}jinling`,
+                    method: 'GET',
+                    success: (res) => {
+                      console.log(res);
+                    }
+                  });
+              }
+
+              /*if (res.result === '8/?book=521$costmoney=20!?book=521') {
+                wx.request({
+                  url: 'https://easy-mock.com/mock/5b0e6ab326e024799d313520/bookreturn/borrow/jinling',
+                  method: 'GET',
+                  success: (res) => {
+                    console.log(res);
+                  }
+                });
+              }*/
+            }
           }
         })
       }
