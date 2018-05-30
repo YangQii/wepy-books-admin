@@ -13,6 +13,9 @@
     background-color: #f8f8f9;
     font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
   }
+  page {
+    background-color: #f8f8f9;
+  }
 </style>
 
 <script>
@@ -29,11 +32,13 @@ export default class extends wepy.app {
   config = {
     pages: [
       'pages/PageIndex',
-      'pages/PageCenter'
+      'pages/PageCenter',
+      'pages/PageBorrow',
+      'pages/PageReturn'
     ],
     window: {
       backgroundTextStyle: 'light',
-      navigationBarBackgroundColor: '#bbbec4',
+      navigationBarBackgroundColor: '#2d8cf0',
       navigationBarTitleText: 'wepy-books-admin',
       navigationBarTextStyle: 'black'
     },

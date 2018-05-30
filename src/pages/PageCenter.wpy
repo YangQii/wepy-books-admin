@@ -3,15 +3,55 @@
     margin: 0;
     padding: 0;
   }
+  .main-body {
+    .main-body_info {
+      height: 600rpx;
+      background-color: #2d8cf0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .main-body_info_title {
+        image {
+          width: 12vh;
+          height: 12vh;
+          border-radius: 50%;
+          margin-left: 10rpx;
+          margin-bottom: 40rpx;
+          border: 8rpx solid #fff;
+        }
+        button {
+          width: 160rpx;
+          height: 80rpx;
+        }
+      }
+    }
+    .main-body_list {
+      navigator {
+        background-color: #fff;
+        margin: 20rpx 0 20rpx 46rpx;
+        padding: 20rpx 0 20rpx 0;
+        border-bottom: 2rpx solid #bbbec4;
+      }
+    }
+  }
 </style>
 <template>
   <view class="main-body">
-
+    <view class="main-body_info">
+      <view class="main-body_info_title">
+        <image src="../static/loginfailed.jpg" style="display: block"></image>
+        <button open-type="" bindgetuserinfo="" style="display: block">登陆</button>
+      </view>
+    </view>
+    <view class="main-body_list">
+      <navigator url="/pages/PageBorrow?title=borrow">借书清单</navigator>
+      <navigator url="/pages/PageReturn?title=return">还书清单</navigator>
+    </view>
   </view>
 </template>
 <script>
   import wepy from 'wepy';
-  export default class PageIndex extends wepy.page{
+  export default class PageCenter extends wepy.page{
     config = {
 
     };
