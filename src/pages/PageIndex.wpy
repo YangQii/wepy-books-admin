@@ -2,12 +2,45 @@
   body {
     margin: 0;
     padding: 0;
-    background-color: #eee;
+  }
+  .main-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .main-body_btn button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 300rpx;
+      height: 300rpx;
+      border-radius: 50%;
+      border: none;
+      margin-bottom: 30rpx;
+    }
+  }
+  .main-body_btn_one:active {
+     opacity: 0.8;
+   }
+  .main-body_btn_two:active {
+    opacity: 0.8;
   }
 </style>
 <template>
   <view class="main-body">
-
+    <view class="main-body_btn">
+      <button @tap="toast"
+              class="main-body_btn_one"
+              size="default"
+              style="background-color: #2d8cf0;margin-top: 60rpx">
+        <text class="main-body_btn_text">借</text>
+      </button>
+      <button @tap="toast"
+              size="default"
+              class="main-body_btn_two"
+              style="background-color: #19be6b">
+        <text class="main-body_btn_text">还</text>
+      </button>
+    </view>
   </view>
 </template>
 <script>

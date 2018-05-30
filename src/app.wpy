@@ -10,7 +10,8 @@
   body {
     margin: 0;
     padding: 0;
-    background-color: #eee;
+    background-color: #f8f8f9;
+    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
   }
 </style>
 
@@ -28,14 +29,33 @@ export default class extends wepy.app {
   config = {
     pages: [
       'pages/PageIndex',
-      'pages/index'
+      'pages/PageCenter'
     ],
     window: {
       backgroundTextStyle: 'light',
-      navigationBarBackgroundColor: '#fff',
+      navigationBarBackgroundColor: '#bbbec4',
       navigationBarTitleText: 'wepy-books-admin',
       navigationBarTextStyle: 'black'
-    }
+    },
+    tabBar: {
+      "color": "#80848f",
+      "selectedColor": "#495060",
+      "borderStyle":"#bbbec4",
+      "list": [
+        {
+        "selectedIconPath": "static/index.png",
+        "iconPath": "static/index_act.png",
+        "pagePath": "pages/PageIndex",
+        "text": "首页"
+        },
+        {
+        "selectedIconPath": "static/my.png",
+        "iconPath": "static/my_act.png",
+        "pagePath": "pages/PageCenter",
+        "text": "个人中心"
+        },
+      ],
+    },
   };
 
   // globalData = {
