@@ -34,7 +34,8 @@ export default class extends wepy.app {
       'pages/PageIndex',
       'pages/PageCenter',
       'pages/PageBorrow',
-      'pages/PageReturn'
+      'pages/PageReturn',
+      'pages/PageBookInfo'
     ],
     window: {
       backgroundTextStyle: 'light',
