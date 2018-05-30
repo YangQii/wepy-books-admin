@@ -28,13 +28,13 @@
 <template>
   <view class="main-body">
     <view class="main-body_btn">
-      <button @tap="toast"
+      <button @tap="handleScanCode"
               class="main-body_btn_one"
               size="default"
               style="background-color: #2d8cf0;margin-top: 60rpx">
         <text class="main-body_btn_text">借</text>
       </button>
-      <button @tap="toast"
+      <button @tap="handleScanCode"
               size="default"
               class="main-body_btn_two"
               style="background-color: #19be6b">
@@ -54,6 +54,16 @@
     };
     data = {
 
+    };
+    methods = {
+      handleScanCode () {
+        wx.scanCode({
+          onlyFromCamera: true,
+          success: (res) => {
+            console.log(res)
+          }
+        })
+      }
     };
   }
 </script>
