@@ -6,23 +6,30 @@
 </style>
 <template>
   <view class="main-body">
-    <text></text>
+    <books></books>
   </view>
 </template>
 <script>
   import wepy from 'wepy';
+  import BookInfo from '../components/bookInfo.wpy';
   export default class PageBookInfo extends wepy.page{
     config = {
 
     };
     components = {
-
+      books: BookInfo
     };
     data = {
-
+      localBorrowData: {}
     };
     onLoad() {
-
+      wx.getStorage({
+        key: 'scanborrow',
+        success: function(res) {
+          console.log('localBorrowData', res);
+          this.localBorrowData = res;
+        }
+      })
     };
 
   }

@@ -1,0 +1,23 @@
+<style type="less">
+  .main-info {
+    margin: 0;
+  }
+</style>
+<template>
+  <view class="main-info">
+    <text>1</text>
+  </view>
+</template>
+<script>
+  import wepy from 'wepy'
+  export default class BookInfo extends wepy.component {
+    props = {
+
+    }
+    data = {
+    }
+    methods = {
+
+    }
+  }
+</script>

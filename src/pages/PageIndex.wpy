@@ -28,13 +28,13 @@
 <template>
   <view class="main-body">
     <view class="main-body_btn">
-      <button @tap="handleScanCode"
+      <button @tap="handleScanCode(1)"
               class="main-body_btn_one"
               size="default"
               style="background-color: #2d8cf0;margin-top: 60rpx">
         <text class="main-body_btn_text">借</text>
       </button>
-      <button @tap="handleScanCode"
+      <button @tap="handleScanCode(2)"
               size="default"
               class="main-body_btn_two"
               style="background-color: #19be6b">
@@ -59,7 +59,10 @@
       scanBody: '$costmoney=20!?book=',
     };
     methods = {
-      handleScanCode () {
+      /**
+       * @param num num
+       */
+      handleScanCode (num) {
         wx.scanCode({
           onlyFromCamera: true,
           success: (res) => {
@@ -73,6 +76,13 @@
                     method: 'GET',
                     success: (res) => {
                       console.log(res);
+                      wx.setStorage({
+                        key: "scanborrow",
+                        data: res,
+                      });
+                      wx.navigateTo({
+                        url: 'PageBookInfo'
+                      })
                     }
                   });
               }
