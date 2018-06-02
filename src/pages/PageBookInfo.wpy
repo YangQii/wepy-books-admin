@@ -3,31 +3,166 @@
     margin: 0;
     padding: 0;
   }
+  .content {
+    height: 70vh;
+    box-sizing: border-box;
+    .icon {
+      z-index: 0;
+    }
+    .content-box {
+      background: white;
+      box-sizing: border-box;
+      height: 25vh;
+      padding: 16rpx;
+      display: flex;
+      border-bottom: 2rpx solid lightgray;
+      .content-box-left {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .content-box-right {
+        flex: 1;
+        display: flex;
+        .bookimg {
+          width: 200rpx;
+          height: 100%;
+          margin-right: 40rpx;
+        }
+        .bookInfo {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start;
+          box-sizing: border-box;
+          position: relative;
+          text {
+            margin-bottom: 8rpx;
+          }
+          text:nth-child(1) {
+            font-size: 30rpx;
+          }
+          text:nth-child(2) {
+            font-size: 28rpx;
+            color: lightgray;
+          }
+          text:nth-child(3) {
+            font-size: 28rpx;
+            color: lightgray;
+          }
+          text:nth-child(4) {
+            font-size: 28rpx;
+            color: #ff7700;
+          }
+        }
+      }
+    }
+  }
 </style>
 <template>
   <view class="main-body">
-    <books></books>
+    <scroll-view scroll-y style="height: 70vh;">
+      <view class="content">
+        <block wx:for="{{localBorrowData}}" wx:key="{{index}}">
+        <!--<block>-->
+          <view class="content-box">
+            <view class="content-box-left">
+              <!--<icon type="success" color="{{check[index]?'#ff7700':'lightgrey'}}" bindtap="CheckItem('{{index}}')" />-->
+            </view>
+            <view class="content-box-right">
+              <!--<image class="bookimg" src="https://img3.doubanio.com/mpic/s2531976.jpg"></image>-->
+              <image class="bookimg" src="{{item.imageurl}}"></image>
+              <view class="bookInfo">
+                <!--<text>严歌苓</text>-->
+                <text>{{item.name}}</text>
+                <!--<text>金陵十三钗</text>-->
+                <text>{{item.author}}</text>
+                <!--<text>isbn: 50083767</text>-->
+                <text>isbn: {{item.isbn}}</text>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </scroll-view>
   </view>
 </template>
 <script>
   import wepy from 'wepy';
-  import BookInfo from '../components/bookInfo.wpy';
   export default class PageBookInfo extends wepy.page{
     config = {
 
     };
     components = {
-      books: BookInfo
     };
     data = {
-      localBorrowData: {}
+      localBorrowData: [
+        {
+          author
+            :
+            "严歌苓",
+          imageurl
+            :
+            "https://img3.doubanio.com/mpic/s2531976.jpg",
+          isbn
+            :
+            "9787500837671",
+          name
+            :
+            "金陵十三钗",
+          scanbody
+            :
+            "$costmoney=20!?book=",
+          scanbookid
+            :
+            "521",
+          scancode
+            :
+            "8/?book=521$costmoney=20!?book=521",
+          scanheader
+            :
+            "8/?book="
+        },
+        {
+          author
+            :
+            "严歌苓",
+          imageurl
+            :
+            "https://img3.doubanio.com/mpic/s2531976.jpg",
+          isbn
+            :
+            "9787500837671",
+          name
+            :
+            "金陵十三钗",
+          scanbody
+            :
+            "$costmoney=20!?book=",
+          scanbookid
+            :
+            "521",
+          scancode
+            :
+            "8/?book=521$costmoney=20!?book=521",
+          scanheader
+            :
+            "8/?book="
+        }
+      ]
     };
     onLoad() {
       wx.getStorage({
         key: 'scanborrow',
         success: function(res) {
-          console.log('localBorrowData', res);
-          this.localBorrowData = res;
+          console.log(res.data.data)
+          let newArr = [];
+          newArr.push(res.data.data);
+          newArr.push(res.data.data);
+
+          this.localBorrowData = newArr;
+          console.log('localBorrowData', this.localBorrowData);
         }
       })
     };
