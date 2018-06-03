@@ -40,7 +40,7 @@ export default class extends wepy.app {
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#2d8cf0',
-      navigationBarTitleText: 'wepy-books-admin',
+      navigationBarTitleText: '图书管理员系统',
       navigationBarTextStyle: 'black'
     },
     tabBar: {
